@@ -43,13 +43,13 @@ btnHeroRegister.addEventListener('click', () => {
 
 function resetAlertBox() {
     const alertBox = document.getElementById('registerAlert');
-    alertBox.className = 'cyber-alert d-none';
+    alertBox.className = 'd-none';
     alertBox.innerHTML = '';
 }
 
 function showFormAlert(message, type) {
     const alertBox = document.getElementById('registerAlert');
-    alertBox.className = `cyber-alert alert-${type}-cyber`;
+    alertBox.className = `alert alert-${type} alert-dismissible fade show`;
     alertBox.innerHTML = message;
 }
 
@@ -62,7 +62,7 @@ document.getElementById('registrationForm').addEventListener('submit', function(
     const inputDateValue = document.getElementById('inputDate').value;
 
     if (!clientName || !clientNIK || !inputDateValue) {
-        showFormAlert('SYS_ERROR: DATA FIELDS INCOMPLETE.', 'danger');
+        showFormAlert('System Error: Data fields incomplete.', 'danger');
         return;
     }
 
@@ -73,13 +73,13 @@ document.getElementById('registrationForm').addEventListener('submit', function(
     selectedDateObj.setHours(0, 0, 0, 0);
 
     if (selectedDateObj < todayDateObj) {
-        showFormAlert('SYS_ERROR: TIME TRAVEL DENIED. SELECT FUTURE DATE.', 'danger');
+        showFormAlert('System Error: Cannot select a past date.', 'danger');
         return;
     }
 
     const selectedDayOfWeek = selectedDateObj.getDay();
     if (selectedDayOfWeek === 0 || selectedDayOfWeek === 6) {
-        showFormAlert('SYS_ERROR: MAINFRAME OFFLINE DURING WEEKENDS.', 'danger');
+        showFormAlert('System Error: Appointments unavailable during weekends.', 'danger');
         return;
     }
 
@@ -90,23 +90,23 @@ document.getElementById('registrationForm').addEventListener('submit', function(
     if (currentDayOfWeek >= 1 && currentDayOfWeek <= 4) {
         const remainingDaysThisWeek = 5 - currentDayOfWeek;
         if (dayDifference > remainingDaysThisWeek) {
-            showFormAlert('SYS_ERROR: ACCESS RESTRICTED TO CURRENT WEEK.', 'danger');
+            showFormAlert('System Error: Access restricted to current week.', 'danger');
             return;
         }
     } else if (currentDayOfWeek === 5) {
         const limitDaysToNextFriday = 7;
         if (dayDifference > limitDaysToNextFriday) {
-            showFormAlert('SYS_ERROR: MAXIMUM RANGE IS NEXT FRIDAY.', 'danger');
+            showFormAlert('System Error: Maximum range is next Friday.', 'danger');
             return;
         }
     } else {
-        showFormAlert('SYS_ERROR: SYSTEM MAINTENANCE ON WEEKEND.', 'danger');
+        showFormAlert('System Error: System maintenance on weekend.', 'danger');
         return;
     }
 
     const existingRegistrations = queueDatabase.filter(data => data.date === inputDateValue).length;
     if (existingRegistrations >= maxQuotaPerDay) {
-        showFormAlert('SYS_ERROR: SERVER CAPACITY FULL FOR SELECTED DATE.', 'danger');
+        showFormAlert('System Error: Server capacity full for selected date.', 'danger');
         return;
     }
 
@@ -117,10 +117,10 @@ document.getElementById('registrationForm').addEventListener('submit', function(
         fullName: clientName,
         nikNumber: clientNIK,
         date: inputDateValue,
-        queueStatus: 'INITIALIZED'
+        queueStatus: 'Initialized'
     });
 
-    showFormAlert(`UPLINK SUCCESS. KEY_ID: ${generatedTicket}`, 'success');
+    showFormAlert(`Success. Your ID Key is: <strong>${generatedTicket}</strong>`, 'success');
     this.reset();
 });
 
@@ -137,18 +137,22 @@ document.getElementById('statusForm').addEventListener('submit', function(e) {
     const userHistoryData = queueDatabase.filter(data => data.nikNumber === searchNIKValue);
 
     if (userHistoryData.length === 0) {
-        statusListWrapper.innerHTML = '<div class="cyber-history-card"><p>NULL RESULT: NO MATCHING DATA IN MAINFRAME.</p></div>';
+        statusListWrapper.innerHTML = '<div class="result-card text-danger fw-bold">Null Result: No matching data found.</div>';
         return;
     }
 
     userHistoryData.forEach(entry => {
         const recordCard = document.createElement('div');
-        recordCard.className = 'cyber-history-card';
+        recordCard.className = 'result-card';
         recordCard.innerHTML = `
-            <p><strong>KEY_ID:</strong> ${entry.ticketNumber}</p>
-            <p><strong>USER:</strong> ${entry.fullName}</p>
-            <p><strong>CYCLE:</strong> ${entry.date}</p>
-            <span class="cyber-badge">STATE: ${entry.queueStatus}</span>
+            <div class="d-flex justify-content-between align-items-center">
+                <div>
+                    <p class="mb-1 text-secondary"><strong>Key ID:</strong> <span class="text-dark">${entry.ticketNumber}</span></p>
+                    <p class="mb-1 text-secondary"><strong>User:</strong> <span class="text-dark">${entry.fullName}</span></p>
+                    <p class="mb-0 text-secondary"><strong>Date:</strong> <span class="text-dark">${entry.date}</span></p>
+                </div>
+                <span class="badge bg-primary fs-6 py-2 px-3">${entry.queueStatus}</span>
+            </div>
         `;
         statusListWrapper.appendChild(recordCard);
     });

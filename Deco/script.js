@@ -40,14 +40,14 @@ btnHeroRegister.addEventListener('click', () => {
 
 function resetAlertBox() {
     const alertBox = document.getElementById('registerAlert');
-    alertBox.className = 'brutal-alert d-none';
+    alertBox.className = 'd-none';
     alertBox.innerHTML = '';
 }
 
 function showFormAlert(message, type) {
     const alertBox = document.getElementById('registerAlert');
-    alertBox.className = `brutal-alert alert-${type}-brutal`;
-    alertBox.innerHTML = message;
+    alertBox.className = `alert alert-${type} alert-dismissible fade show`;
+    alertBox.innerHTML = `${message} <button type="button" class="btn-close" onclick="resetAlertBox()"></button>`;
 }
 
 document.getElementById('registrationForm').addEventListener('submit', function(e) {
@@ -59,7 +59,7 @@ document.getElementById('registrationForm').addEventListener('submit', function(
     const inputDateValue = document.getElementById('inputDate').value;
 
     if (!clientName || !clientNIK || !inputDateValue) {
-        showFormAlert('ERROR: FIELDS CANNOT BE EMPTY.', 'danger');
+        showFormAlert('Error: All fields are required.', 'danger');
         return;
     }
 
@@ -70,13 +70,13 @@ document.getElementById('registrationForm').addEventListener('submit', function(
     selectedDateObj.setHours(0, 0, 0, 0);
 
     if (selectedDateObj < todayDateObj) {
-        showFormAlert('ERROR: PAST DATES ARE INVALID.', 'danger');
+        showFormAlert('Error: Past dates are invalid.', 'danger');
         return;
     }
 
     const selectedDayOfWeek = selectedDateObj.getDay();
     if (selectedDayOfWeek === 0 || selectedDayOfWeek === 6) {
-        showFormAlert('ERROR: WEEKENDS ARE UNAVAILABLE.', 'danger');
+        showFormAlert('Error: Weekend appointments are unavailable.', 'danger');
         return;
     }
 
@@ -87,23 +87,23 @@ document.getElementById('registrationForm').addEventListener('submit', function(
     if (currentDayOfWeek >= 1 && currentDayOfWeek <= 4) {
         const remainingDaysThisWeek = 5 - currentDayOfWeek;
         if (dayDifference > remainingDaysThisWeek) {
-            showFormAlert('ERROR: ONLY CURRENT WEEK ALLOWED.', 'danger');
+            showFormAlert('Error: You can only register for the current week.', 'danger');
             return;
         }
     } else if (currentDayOfWeek === 5) {
         const limitDaysToNextFriday = 7;
         if (dayDifference > limitDaysToNextFriday) {
-            showFormAlert('ERROR: REGISTER UP TO NEXT FRIDAY ONLY.', 'danger');
+            showFormAlert('Error: Registration is limited up to next Friday.', 'danger');
             return;
         }
     } else {
-        showFormAlert('ERROR: WEEKEND REGISTRATION SYSTEM OFFLINE.', 'danger');
+        showFormAlert('Error: Weekend registration system is currently offline.', 'danger');
         return;
     }
 
     const existingRegistrations = queueDatabase.filter(data => data.date === inputDateValue).length;
     if (existingRegistrations >= maxQuotaPerDay) {
-        showFormAlert('ERROR: QUOTA EXCEEDED FOR THIS DATE.', 'danger');
+        showFormAlert('Error: Daily quota exceeded for this date.', 'danger');
         return;
     }
 
@@ -117,7 +117,7 @@ document.getElementById('registrationForm').addEventListener('submit', function(
         queueStatus: 'QUEUED'
     });
 
-    showFormAlert(`SUCCESS. TICKET ID: ${generatedTicket}`, 'success');
+    showFormAlert(`Success! Your Ticket ID is <strong>${generatedTicket}</strong>`, 'success');
     this.reset();
 });
 
@@ -134,18 +134,29 @@ document.getElementById('statusForm').addEventListener('submit', function(e) {
     const userHistoryData = queueDatabase.filter(data => data.nikNumber === searchNIKValue);
 
     if (userHistoryData.length === 0) {
-        statusListWrapper.innerHTML = '<div class="brutal-history-card"><p>NO MATCHING NIK FOUND IN DATABASE.</p></div>';
+        statusListWrapper.innerHTML = `
+            <div class="alert alert-warning mb-0">
+                No matching NIK found in our database.
+            </div>`;
         return;
     }
 
     userHistoryData.forEach(entry => {
         const recordCard = document.createElement('div');
-        recordCard.className = 'brutal-history-card';
+        recordCard.className = 'card history-card border-0 shadow-sm p-4';
         recordCard.innerHTML = `
-            <p><strong>ID</strong> ${entry.ticketNumber}</p>
-            <p><strong>NAME</strong> ${entry.fullName}</p>
-            <p><strong>DATE</strong> ${entry.date}</p>
-            <span class="brutal-badge">STATUS: ${entry.queueStatus}</span>
+            <div class="d-flex flex-column flex-md-row justify-content-between align-items-md-center gap-3">
+                <div>
+                    <h5 class="text-primary fw-bold mb-1">${entry.ticketNumber}</h5>
+                    <p class="mb-1 text-dark fw-semibold">${entry.fullName}</p>
+                    <p class="mb-0 text-secondary small"><i class="fas fa-calendar-alt me-2"></i>${entry.date}</p>
+                </div>
+                <div>
+                    <span class="badge bg-warning text-dark px-3 py-2 rounded-pill shadow-sm">
+                        STATUS: ${entry.queueStatus}
+                    </span>
+                </div>
+            </div>
         `;
         statusListWrapper.appendChild(recordCard);
     });

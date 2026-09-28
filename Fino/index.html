@@ -3,66 +3,66 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Queue System V4</title>
+<title>Queue System</title>
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
 <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
-<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Rajdhani:wght@400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="style.css">
 </head>
-<body>
-<nav class="navbar navbar-expand-lg cyber-nav">
+<body class="bg-light text-dark">
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark shadow-sm">
   <div class="container">
-    <a class="navbar-brand cyber-brand" href="#" id="navHome">SYS.ADMIN_</a>
-    <button class="navbar-toggler cyber-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu">
-      <i class="fas fa-barcode"></i>
+    <a class="navbar-brand fw-bold" href="#" id="navHome">SysAdmin</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu">
+      <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navMenu">
       <ul class="navbar-nav ms-auto">
-        <li class="nav-item"><a class="nav-link cyber-link" href="#" id="linkRegister">[ REGISTER ]</a></li>
-        <li class="nav-item"><a class="nav-link cyber-link" href="#" id="linkStatus">[ STATUS ]</a></li>
+        <li class="nav-item"><a class="nav-link" href="#" id="linkRegister">Register</a></li>
+        <li class="nav-item"><a class="nav-link" href="#" id="linkStatus">Status</a></li>
       </ul>
     </div>
   </div>
 </nav>
 
-<div class="container cyber-main">
+<div class="container my-5 main-content">
   <div id="homeSection" class="view-section active-section">
     <div class="row align-items-center mb-5 mt-4">
       <div class="col-lg-7">
-        <h1 class="cyber-title">GOV_NETWORK<br><span class="cyber-highlight">QUEUE_PROTOCOL</span></h1>
-        <p class="cyber-subtitle">ACCESS THE MAINFRAME. SECURE YOUR APPOINTMENT VECTOR WITHOUT THE WAIT. EFFICIENT. TRANSPARENT. AUTOMATED.</p>
-        <button class="cyber-btn mt-3" id="btnHeroRegister">INITIATE_SEQUENCE</button>
+        <h1 class="display-4 fw-bold text-primary">Queue Protocol</h1>
+        <p class="lead text-secondary">Secure your appointment without the wait. Efficient. Transparent. Automated.</p>
+        <button class="btn btn-primary btn-lg mt-3 custom-btn" id="btnHeroRegister">Initiate Sequence</button>
       </div>
       <div class="col-lg-5 text-center d-none d-lg-block">
-        <div class="cyber-visual">
-          <i class="fas fa-network-wired cyber-icon-xl"></i>
-        </div>
+        <i class="fas fa-network-wired text-primary" style="font-size: 6rem; opacity: 0.8;"></i>
       </div>
     </div>
     
     <div class="row g-4 mt-5">
       <div class="col-md-4">
-        <div class="cyber-card">
-          <div class="cyber-card-glitch"></div>
-          <i class="fas fa-fingerprint cyber-card-icon"></i>
-          <h4 class="cyber-card-title">PHASE_01: ID</h4>
-          <p class="cyber-card-text">INPUT VALID CREDENTIALS. NIK AND FULL DESIGNATION REQUIRED FOR AUTHENTICATION.</p>
+        <div class="card h-100 shadow-sm border-0 custom-card">
+          <div class="card-body text-center p-4">
+            <i class="fas fa-fingerprint fa-3x text-primary mb-3"></i>
+            <h4 class="card-title fw-bold">Phase 01: ID</h4>
+            <p class="card-text text-muted">Input valid credentials. NIK and full designation required for authentication.</p>
+          </div>
         </div>
       </div>
       <div class="col-md-4">
-        <div class="cyber-card">
-          <div class="cyber-card-glitch"></div>
-          <i class="fas fa-clock cyber-card-icon"></i>
-          <h4 class="cyber-card-title">PHASE_02: TIME</h4>
-          <p class="cyber-card-text">SELECT OPERATIONAL CYCLE. WEEKEND CYCLES ARE LOCKED OUT OF THE MAINFRAME.</p>
+        <div class="card h-100 shadow-sm border-0 custom-card">
+          <div class="card-body text-center p-4">
+            <i class="fas fa-clock fa-3x text-primary mb-3"></i>
+            <h4 class="card-title fw-bold">Phase 02: Time</h4>
+            <p class="card-text text-muted">Select operational cycle. Weekend cycles are strictly locked out.</p>
+          </div>
         </div>
       </div>
       <div class="col-md-4">
-        <div class="cyber-card">
-          <div class="cyber-card-glitch"></div>
-          <i class="fas fa-satellite-dish cyber-card-icon"></i>
-          <h4 class="cyber-card-title">PHASE_03: SCAN</h4>
-          <p class="cyber-card-text">MONITOR YOUR GENERATED KEY. REAL-TIME TRACKING OF YOUR ALLOCATED SLOT.</p>
+        <div class="card h-100 shadow-sm border-0 custom-card">
+          <div class="card-body text-center p-4">
+            <i class="fas fa-satellite-dish fa-3x text-primary mb-3"></i>
+            <h4 class="card-title fw-bold">Phase 03: Scan</h4>
+            <p class="card-text text-muted">Monitor your generated key. Real-time tracking of your allocated slot.</p>
+          </div>
         </div>
       </div>
     </div>
@@ -70,26 +70,27 @@
 
   <div id="registerSection" class="view-section">
     <div class="row justify-content-center">
-      <div class="col-lg-7">
-        <div class="cyber-panel">
-          <div class="cyber-panel-decor"></div>
-          <h2 class="cyber-section-title">REGISTRATION_UPLINK</h2>
-          <div id="registerAlert" class="cyber-alert d-none"></div>
-          <form id="registrationForm">
-            <div class="mb-4">
-              <label class="cyber-label">USER_DESIGNATION (NAME)</label>
-              <input type="text" id="inputName" class="cyber-input" required>
-            </div>
-            <div class="mb-4">
-              <label class="cyber-label">PRIMARY_KEY (NIK)</label>
-              <input type="number" id="inputNIK" class="cyber-input" required>
-            </div>
-            <div class="mb-5">
-              <label class="cyber-label">CYCLE_DATE</label>
-              <input type="date" id="inputDate" class="cyber-input" required>
-            </div>
-            <button type="submit" class="cyber-btn w-100">TRANSMIT_DATA</button>
-          </form>
+      <div class="col-lg-6">
+        <div class="card shadow border-0 custom-card">
+          <div class="card-body p-5">
+            <h2 class="text-center mb-4 fw-bold text-primary">Registration Form</h2>
+            <div id="registerAlert" class="d-none"></div>
+            <form id="registrationForm">
+              <div class="mb-3">
+                <label class="form-label fw-semibold">Full Name</label>
+                <input type="text" id="inputName" class="form-control custom-input" required>
+              </div>
+              <div class="mb-3">
+                <label class="form-label fw-semibold">NIK (Identity Number)</label>
+                <input type="number" id="inputNIK" class="form-control custom-input" required>
+              </div>
+              <div class="mb-4">
+                <label class="form-label fw-semibold">Appointment Date</label>
+                <input type="date" id="inputDate" class="form-control custom-input" required>
+              </div>
+              <button type="submit" class="btn btn-primary w-100 btn-lg custom-btn">Submit Data</button>
+            </form>
+          </div>
         </div>
       </div>
     </div>
@@ -98,40 +99,30 @@
   <div id="statusSection" class="view-section">
     <div class="row justify-content-center">
       <div class="col-lg-8">
-        <div class="cyber-panel mb-5">
-          <div class="cyber-panel-decor"></div>
-          <h2 class="cyber-section-title">DATABASE_QUERY</h2>
-          <form id="statusForm" class="d-flex flex-column flex-md-row gap-3">
-            <input type="number" id="searchNIK" class="cyber-input flex-grow-1" placeholder="INPUT NIK TO SCAN..." required>
-            <button type="submit" class="cyber-btn px-5">EXECUTE</button>
-          </form>
+        <div class="card shadow border-0 custom-card mb-4">
+          <div class="card-body p-4">
+            <h2 class="fw-bold text-primary mb-3">Database Query</h2>
+            <form id="statusForm" class="d-flex flex-column flex-md-row gap-3">
+              <input type="number" id="searchNIK" class="form-control custom-input flex-grow-1" placeholder="Input NIK to scan..." required>
+              <button type="submit" class="btn btn-primary px-5 custom-btn">Execute</button>
+            </form>
+          </div>
         </div>
         <div id="statusResultContainer" class="d-none">
-           <h3 class="cyber-result-heading">QUERY_RESULTS:</h3>
-           <div id="statusList" class="cyber-history-wrap"></div>
+           <h4 class="mb-3 fw-bold text-secondary">Query Results:</h4>
+           <div id="statusList" class="d-flex flex-column gap-3"></div>
         </div>
       </div>
     </div>
   </div>
 </div>
 
-<footer class="cyber-footer mt-auto">
-  <div class="container">
-    <div class="row">
-      <div class="col-md-6 mb-4 mb-md-0">
-        <h4 class="cyber-footer-brand">SYS.ADMIN_</h4>
-        <p class="cyber-footer-text">> LOC: Jl. Merdeka No.45, Sector Jakarta</p>
-        <p class="cyber-footer-text">> COMM: (021) 555-0198</p>
-        <p class="cyber-footer-text">> NODE: contact@instansi.gov.id</p>
-      </div>
-      <div class="col-md-6">
-        <div class="cyber-map-container">
-          <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d126920.24009088654!2d106.758830113824!3d-6.229746497187132!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e69f3e945e34b9d%3A0x100c5e82dd4b820!2sJakarta!5e0!3m2!1sen!2sid!4v1689255280365!5m2!1sen!2sid" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-        </div>
-      </div>
-    </div>
+<footer class="bg-dark text-white py-4 mt-auto border-top border-primary border-3">
+  <div class="container text-center">
+    <p class="mb-0">&copy; 2026 SysAdmin Protocol. All operations monitored.</p>
   </div>
 </footer>
+
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 <script src="script.js"></script>
 </body>

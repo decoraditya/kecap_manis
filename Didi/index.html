@@ -3,125 +3,124 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Queue System V3</title>
+<title>Queue System</title>
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
 <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="style.css">
 </head>
-<body>
-<nav class="navbar navbar-expand-lg minimal-nav">
+<body class="bg-light">
+<nav class="navbar navbar-expand-lg navbar-light custom-navbar shadow-sm">
   <div class="container">
-    <a class="navbar-brand minimal-brand" href="#" id="navHome">InstansiAdministrasi</a>
-    <button class="navbar-toggler minimal-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu">
-      <i class="fas fa-grip-lines"></i>
+    <a class="navbar-brand fw-bold custom-brand" href="#" id="navHome">InstansiAdministrasi</a>
+    <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu">
+      <i class="fas fa-bars"></i>
     </button>
     <div class="collapse navbar-collapse" id="navMenu">
-      <ul class="navbar-nav ms-auto minimal-nav-list">
-        <li class="nav-item"><a class="nav-link minimal-link" href="#" id="linkRegister">Register</a></li>
-        <li class="nav-item"><a class="nav-link minimal-link" href="#" id="linkStatus">Status</a></li>
+      <ul class="navbar-nav ms-auto gap-3">
+        <li class="nav-item"><a class="nav-link fw-semibold custom-link" href="#" id="linkRegister">Register</a></li>
+        <li class="nav-item"><a class="nav-link fw-semibold custom-link" href="#" id="linkStatus">Status</a></li>
       </ul>
     </div>
   </div>
 </nav>
 
-<div class="container minimal-container">
+<div class="container py-5 my-3 flex-grow-1">
   <div id="homeSection" class="view-section active-section">
-    <div class="row justify-content-center text-center minimal-hero">
+    <div class="row justify-content-center text-center mb-5">
       <div class="col-lg-8">
-        <div class="minimal-badge-top">Queue Portal 3.0</div>
-        <h1 class="minimal-title">Effortless public service.</h1>
-        <p class="minimal-subtitle">A streamlined, transparent, and user-centric approach to managing your administrative appointments.</p>
-        <button class="minimal-btn minimal-btn-dark mt-4" id="btnHeroRegister">Book an Appointment</button>
+        <span class="badge custom-badge mb-3 py-2 px-3">Queue Portal 3.0</span>
+        <h1 class="display-4 fw-bold custom-title mb-4">Effortless public service.</h1>
+        <p class="lead text-muted mb-4">A streamlined, transparent, and user-centric approach to managing your administrative appointments.</p>
+        <button class="btn custom-btn-dark px-4 py-2" id="btnHeroRegister">Book an Appointment</button>
       </div>
     </div>
     
-    <div class="row g-5 mt-5">
+    <div class="row g-4 mt-2">
       <div class="col-md-4">
-        <div class="minimal-card">
-          <div class="minimal-icon-wrap"><i class="fas fa-id-badge"></i></div>
-          <h4 class="minimal-card-title">Identity</h4>
-          <p class="minimal-card-text">Securely enter your National ID and full name for verification.</p>
+        <div class="card h-100 border-0 custom-card p-4">
+          <div class="custom-icon mb-3"><i class="fas fa-id-badge"></i></div>
+          <h4 class="fw-bold">Identity</h4>
+          <p class="text-secondary mb-0">Securely enter your National ID and full name for verification.</p>
         </div>
       </div>
       <div class="col-md-4">
-        <div class="minimal-card">
-          <div class="minimal-icon-wrap"><i class="fas fa-calendar-alt"></i></div>
-          <h4 class="minimal-card-title">Schedule</h4>
-          <p class="minimal-card-text">Choose your preferred weekday. Quotas are optimized daily.</p>
+        <div class="card h-100 border-0 custom-card p-4">
+          <div class="custom-icon mb-3"><i class="fas fa-calendar-alt"></i></div>
+          <h4 class="fw-bold">Schedule</h4>
+          <p class="text-secondary mb-0">Choose your preferred weekday. Quotas are optimized daily.</p>
         </div>
       </div>
       <div class="col-md-4">
-        <div class="minimal-card">
-          <div class="minimal-icon-wrap"><i class="fas fa-check-circle"></i></div>
-          <h4 class="minimal-card-title">Track</h4>
-          <p class="minimal-card-text">Keep track of your appointment status in real-time.</p>
+        <div class="card h-100 border-0 custom-card p-4">
+          <div class="custom-icon mb-3"><i class="fas fa-check-circle"></i></div>
+          <h4 class="fw-bold">Track</h4>
+          <p class="text-secondary mb-0">Keep track of your appointment status in real-time.</p>
         </div>
       </div>
     </div>
   </div>
 
-  <div id="registerSection" class="view-section">
+  <div id="registerSection" class="view-section d-none">
     <div class="row justify-content-center">
       <div class="col-lg-6 col-md-8">
-        <div class="minimal-form-wrapper">
-          <h2 class="minimal-section-title">New Appointment</h2>
-          <p class="minimal-section-desc">Please fill out the form below to secure your spot.</p>
-          <div id="registerAlert" class="minimal-alert d-none"></div>
+        <div class="card border-0 custom-card p-4 p-md-5">
+          <h2 class="fw-bold mb-2">New Appointment</h2>
+          <p class="text-muted mb-4">Please fill out the form below to secure your spot.</p>
+          <div id="registerAlert" class="alert d-none rounded-3" role="alert"></div>
           <form id="registrationForm">
-            <div class="form-group-minimal">
-              <label class="minimal-label">Full Name</label>
-              <input type="text" id="inputName" class="minimal-input" placeholder="e.g. John Doe" required>
+            <div class="mb-3">
+              <label class="form-label fw-semibold">Full Name</label>
+              <input type="text" id="inputName" class="form-control custom-input" placeholder="e.g. John Doe" required>
             </div>
-            <div class="form-group-minimal">
-              <label class="minimal-label">National ID (NIK)</label>
-              <input type="number" id="inputNIK" class="minimal-input" placeholder="16-digit NIK" required>
+            <div class="mb-3">
+              <label class="form-label fw-semibold">National ID (NIK)</label>
+              <input type="number" id="inputNIK" class="form-control custom-input" placeholder="16-digit NIK" required>
             </div>
-            <div class="form-group-minimal mb-5">
-              <label class="minimal-label">Date</label>
-              <input type="date" id="inputDate" class="minimal-input" required>
+            <div class="mb-4">
+              <label class="form-label fw-semibold">Date</label>
+              <input type="date" id="inputDate" class="form-control custom-input" required>
             </div>
-            <button type="submit" class="minimal-btn minimal-btn-dark w-100">Confirm Registration</button>
+            <button type="submit" class="btn custom-btn-dark w-100 py-2 fw-semibold">Confirm Registration</button>
           </form>
         </div>
       </div>
     </div>
   </div>
 
-  <div id="statusSection" class="view-section">
+  <div id="statusSection" class="view-section d-none">
     <div class="row justify-content-center">
       <div class="col-lg-6 col-md-8">
-        <div class="minimal-form-wrapper mb-5">
-          <h2 class="minimal-section-title">Check Status</h2>
-          <p class="minimal-section-desc">Enter your National ID to retrieve your queue history.</p>
-          <form id="statusForm" class="d-flex flex-column gap-3 mt-4">
-            <input type="number" id="searchNIK" class="minimal-input" placeholder="Enter NIK..." required>
-            <button type="submit" class="minimal-btn minimal-btn-outline w-100">Search Records</button>
+        <div class="card border-0 custom-card p-4 p-md-5 mb-4">
+          <h2 class="fw-bold mb-2">Check Status</h2>
+          <p class="text-muted mb-4">Enter your National ID to retrieve your queue history.</p>
+          <form id="statusForm" class="d-flex flex-column gap-3">
+            <input type="number" id="searchNIK" class="form-control custom-input" placeholder="Enter NIK..." required>
+            <button type="submit" class="btn custom-btn-outline w-100 py-2 fw-semibold">Search Records</button>
           </form>
         </div>
         <div id="statusResultContainer" class="d-none">
-           <h3 class="minimal-result-title">History Records</h3>
-           <div id="statusList" class="minimal-history-container"></div>
+           <h4 class="fw-bold mb-3 px-2">History Records</h4>
+           <div id="statusList" class="d-flex flex-column gap-3"></div>
         </div>
       </div>
     </div>
   </div>
 </div>
 
-<footer class="minimal-footer mt-auto">
+<footer class="bg-white border-top py-5 mt-auto">
   <div class="container">
-    <div class="row align-items-center">
-      <div class="col-md-6 mb-4 mb-md-0">
-        <h3 class="minimal-footer-brand">InstansiAdministrasi</h3>
-        <ul class="minimal-footer-info">
-          <li><i class="fas fa-map-pin"></i> Jl. Merdeka No.45, Jakarta Pusat</li>
-          <li><i class="fas fa-phone-alt"></i> (021) 555-0198</li>
-          <li><i class="fas fa-paper-plane"></i> contact@instansi.gov.id</li>
+    <div class="row align-items-center g-4">
+      <div class="col-md-6">
+        <h4 class="fw-bold mb-3 custom-brand">InstansiAdministrasi</h4>
+        <ul class="list-unstyled text-muted d-flex flex-column gap-2 mb-0">
+          <li><i class="fas fa-map-pin me-2 w-20"></i> Jl. Merdeka No.45, Jakarta Pusat</li>
+          <li><i class="fas fa-phone-alt me-2 w-20"></i> (021) 555-0198</li>
+          <li><i class="fas fa-paper-plane me-2 w-20"></i> contact@instansi.gov.id</li>
         </ul>
       </div>
       <div class="col-md-6">
-        <div class="minimal-map-wrap">
-          <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d126920.24009088654!2d106.758830113824!3d-6.229746497187132!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e69f3e945e34b9d%3A0x100c5e82dd4b820!2sJakarta!5e0!3m2!1sen!2sid!4v1689255280365!5m2!1sen!2sid" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+        <div class="rounded-4 overflow-hidden shadow-sm" style="height: 200px;">
+          <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d126920.24009088654!2d106.758830113824!3d-6.229746497187132!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e69f3e945e34b9d%3A0x100c5e82dd4b820!2sJakarta!5e0!3m2!1sen!2sid!4v1689255280365!5m2!1sen!2sid" class="w-100 h-100 border-0" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
         </div>
       </div>
     </div>

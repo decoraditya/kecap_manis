@@ -19,7 +19,7 @@ function switchView(targetView) {
     
     setTimeout(() => {
         viewSections[targetView].classList.add('active-section');
-    }, 20);
+    }, 10);
 }
 
 navHome.addEventListener('click', (e) => {
@@ -43,13 +43,13 @@ btnHeroRegister.addEventListener('click', () => {
 
 function resetAlertBox() {
     const alertBox = document.getElementById('registerAlert');
-    alertBox.className = 'neu-alert d-none';
+    alertBox.className = 'alert d-none';
     alertBox.innerHTML = '';
 }
 
 function showFormAlert(message, type) {
     const alertBox = document.getElementById('registerAlert');
-    alertBox.className = `neu-alert alert-${type}-neu`;
+    alertBox.className = `alert alert-${type}`;
     alertBox.innerHTML = message;
 }
 
@@ -137,18 +137,20 @@ document.getElementById('statusForm').addEventListener('submit', function(e) {
     const userHistoryData = queueDatabase.filter(data => data.nikNumber === searchNIKValue);
 
     if (userHistoryData.length === 0) {
-        statusListWrapper.innerHTML = '<div class="neu-history-card"><p>No data corresponding to this NIK was found.</p></div>';
+        statusListWrapper.innerHTML = '<div class="history-card text-secondary">No data corresponding to this NIK was found.</div>';
         return;
     }
 
     userHistoryData.forEach(entry => {
         const recordCard = document.createElement('div');
-        recordCard.className = 'neu-history-card';
+        recordCard.className = 'history-card';
         recordCard.innerHTML = `
-            <p><strong>Ticket:</strong> ${entry.ticketNumber}</p>
-            <p><strong>Name:</strong> ${entry.fullName}</p>
-            <p><strong>Date:</strong> ${entry.date}</p>
-            <span class="neu-badge">Status: ${entry.queueStatus}</span>
+            <div class="d-flex justify-content-between align-items-center mb-2">
+                <h5 class="mb-0 text-primary fw-bold">${entry.ticketNumber}</h5>
+                <span class="badge bg-success px-3 py-2 rounded-pill">${entry.queueStatus}</span>
+            </div>
+            <p class="mb-1 text-dark"><strong>Name:</strong> ${entry.fullName}</p>
+            <p class="mb-0 text-secondary small"><i class="fas fa-calendar-alt me-1"></i> ${entry.date}</p>
         `;
         statusListWrapper.appendChild(recordCard);
     });

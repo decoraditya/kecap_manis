@@ -14,12 +14,12 @@ const viewSections = {
 
 function switchView(targetView) {
     Object.values(viewSections).forEach(section => {
+        section.classList.add('d-none');
         section.classList.remove('active-section');
     });
     
-    setTimeout(() => {
-        viewSections[targetView].classList.add('active-section');
-    }, 10);
+    viewSections[targetView].classList.remove('d-none');
+    viewSections[targetView].classList.add('active-section');
 }
 
 navHome.addEventListener('click', (e) => {
@@ -43,13 +43,14 @@ btnHeroRegister.addEventListener('click', () => {
 
 function resetAlertBox() {
     const alertBox = document.getElementById('registerAlert');
-    alertBox.className = 'minimal-alert d-none';
+    alertBox.classList.add('d-none');
+    alertBox.className = 'alert d-none rounded-3';
     alertBox.innerHTML = '';
 }
 
 function showFormAlert(message, type) {
     const alertBox = document.getElementById('registerAlert');
-    alertBox.className = `minimal-alert alert-${type}-minimal`;
+    alertBox.className = `alert alert-${type} rounded-3`;
     alertBox.innerHTML = message;
 }
 
@@ -137,20 +138,20 @@ document.getElementById('statusForm').addEventListener('submit', function(e) {
     const userHistoryData = queueDatabase.filter(data => data.nikNumber === searchNIKValue);
 
     if (userHistoryData.length === 0) {
-        statusListWrapper.innerHTML = '<div class="minimal-history-card"><p>No records found for the provided NIK.</p></div>';
+        statusListWrapper.innerHTML = '<div class="history-card text-muted">No records found for the provided NIK.</div>';
         return;
     }
 
     userHistoryData.forEach(entry => {
         const recordCard = document.createElement('div');
-        recordCard.className = 'minimal-history-card';
+        recordCard.className = 'history-card flex-column flex-sm-row align-items-start align-items-sm-center gap-3';
         recordCard.innerHTML = `
-            <div class="minimal-history-data">
-                <p><strong>Ticket ID:</strong> ${entry.ticketNumber}</p>
-                <p><strong>Name:</strong> ${entry.fullName}</p>
-                <p><strong>Date:</strong> ${entry.date}</p>
+            <div>
+                <p class="mb-1 text-secondary"><strong class="text-dark">Ticket ID:</strong> ${entry.ticketNumber}</p>
+                <p class="mb-1 text-secondary"><strong class="text-dark">Name:</strong> ${entry.fullName}</p>
+                <p class="mb-0 text-secondary"><strong class="text-dark">Date:</strong> ${entry.date}</p>
             </div>
-            <div class="minimal-status-badge">${entry.queueStatus}</div>
+            <div class="status-badge">${entry.queueStatus}</div>
         `;
         statusListWrapper.appendChild(recordCard);
     });

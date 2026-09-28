@@ -40,13 +40,13 @@ btnHeroRegister.addEventListener('click', () => {
 
 function resetAlertBox() {
     const alertBox = document.getElementById('registerAlert');
-    alertBox.className = 'custom-alert d-none';
+    alertBox.className = 'd-none';
     alertBox.innerHTML = '';
 }
 
 function showFormAlert(message, type) {
     const alertBox = document.getElementById('registerAlert');
-    alertBox.className = `custom-alert alert-${type}-custom`;
+    alertBox.className = 'alert alert-' + type + ' mb-4 fw-semibold';
     alertBox.innerHTML = message;
 }
 
@@ -117,7 +117,7 @@ document.getElementById('registrationForm').addEventListener('submit', function(
         queueStatus: 'Pending Review'
     });
 
-    showFormAlert(`Registration successful! Your generated Ticket Number is ${generatedTicket}`, 'success');
+    showFormAlert('Registration successful! Your generated Ticket Number is ' + generatedTicket, 'success');
     this.reset();
 });
 
@@ -134,18 +134,22 @@ document.getElementById('statusForm').addEventListener('submit', function(e) {
     const userHistoryData = queueDatabase.filter(data => data.nikNumber === searchNIKValue);
 
     if (userHistoryData.length === 0) {
-        statusListWrapper.innerHTML = '<div class="history-card"><p>No data found matching the provided NIK.</p></div>';
+        statusListWrapper.innerHTML = '<div class="alert alert-warning fw-semibold mb-0">No data found matching the provided NIK.</div>';
         return;
     }
 
     userHistoryData.forEach(entry => {
         const recordCard = document.createElement('div');
-        recordCard.className = 'history-card';
+        recordCard.className = 'history-item';
         recordCard.innerHTML = `
-            <p><strong>Ticket</strong> : ${entry.ticketNumber}</p>
-            <p><strong>Name</strong> : ${entry.fullName}</p>
-            <p><strong>Date</strong> : ${entry.date}</p>
-            <span class="status-badge">${entry.queueStatus}</span>
+            <div class="d-flex justify-content-between align-items-center flex-wrap gap-2">
+                <div>
+                    <h6 class="mb-1 fw-bold text-dark">Ticket: ${entry.ticketNumber}</h6>
+                    <p class="mb-1 text-secondary small">Name: ${entry.fullName}</p>
+                    <p class="mb-0 text-secondary small">Date: ${entry.date}</p>
+                </div>
+                <span class="badge custom-badge rounded-pill px-3 py-2">${entry.queueStatus}</span>
+            </div>
         `;
         statusListWrapper.appendChild(recordCard);
     });
