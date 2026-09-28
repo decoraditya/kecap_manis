@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Queue System V2</title>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<nav class="navbar navbar-expand-lg brutal-nav">
+  <div class="container">
+    <a class="navbar-brand brutal-brand" href="#" id="navHome">ADMIN.SYS</a>
+    <button class="navbar-toggler brutal-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu">
+      <i class="fas fa-bars"></i>
+    </button>
+    <div class="collapse navbar-collapse" id="navMenu">
+      <ul class="navbar-nav ms-auto">
+        <li class="nav-item"><a class="nav-link brutal-link" href="#" id="linkRegister">Register</a></li>
+        <li class="nav-item"><a class="nav-link brutal-link" href="#" id="linkStatus">Track Status</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<div class="container brutal-container">
+  <div id="homeSection" class="view-section active-section">
+    <div class="row align-items-center mb-5 brutal-hero-wrapper">
+      <div class="col-lg-7">
+        <div class="brutal-hero-box">
+          <h1 class="brutal-title">PUBLIC QUEUE REGISTRY</h1>
+          <p class="brutal-subtitle">No more waiting in line blindly. Secure your spot in our administrative facility with zero hassle.</p>
+          <button class="brutal-btn brutal-btn-pink mt-4" id="btnHeroRegister">START REGISTRATION</button>
+        </div>
+      </div>
+      <div class="col-lg-5 d-none d-lg-block text-center">
+        <div class="brutal-icon-box">
+          <i class="fas fa-bullhorn brutal-hero-icon"></i>
+        </div>
+      </div>
+    </div>
+    
+    <div class="row g-4 mt-2">
+      <div class="col-md-4">
+        <div class="brutal-card bg-cyan">
+          <i class="fas fa-address-card brutal-card-icon"></i>
+          <h4 class="brutal-card-title">1. IDENTIFY</h4>
+          <p class="brutal-card-text">Provide your legal National ID (NIK) and full name to verify identity.</p>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="brutal-card bg-yellow">
+          <i class="fas fa-calendar-day brutal-card-icon"></i>
+          <h4 class="brutal-card-title">2. SCHEDULE</h4>
+          <p class="brutal-card-text">Pick an available weekday. Weekend requests will be rejected by the system.</p>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="brutal-card bg-pink">
+          <i class="fas fa-receipt brutal-card-icon"></i>
+          <h4 class="brutal-card-title">3. CONFIRM</h4>
+          <p class="brutal-card-text">Receive your ticket number and track your status on this portal.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div id="registerSection" class="view-section">
+    <div class="row justify-content-center">
+      <div class="col-lg-7">
+        <div class="brutal-form-container bg-yellow">
+          <h2 class="brutal-section-title">NEW TICKET ENTRY</h2>
+          <div id="registerAlert" class="brutal-alert d-none"></div>
+          <form id="registrationForm">
+            <div class="mb-4">
+              <label class="brutal-label">FULL LEGAL NAME</label>
+              <input type="text" id="inputName" class="brutal-input" required>
+            </div>
+            <div class="mb-4">
+              <label class="brutal-label">NATIONAL ID (NIK)</label>
+              <input type="number" id="inputNIK" class="brutal-input" required>
+            </div>
+            <div class="mb-5">
+              <label class="brutal-label">APPOINTMENT DATE</label>
+              <input type="date" id="inputDate" class="brutal-input" required>
+            </div>
+            <button type="submit" class="brutal-btn brutal-btn-black w-100">GENERATE TICKET</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div id="statusSection" class="view-section">
+    <div class="row justify-content-center">
+      <div class="col-lg-8">
+        <div class="brutal-form-container bg-cyan mb-5">
+          <h2 class="brutal-section-title">TRACK RECORD</h2>
+          <form id="statusForm" class="d-flex flex-column flex-md-row gap-3">
+            <input type="number" id="searchNIK" class="brutal-input flex-grow-1" placeholder="ENTER NIK..." required>
+            <button type="submit" class="brutal-btn brutal-btn-black px-5">SEARCH</button>
+          </form>
+        </div>
+        <div id="statusResultContainer" class="d-none">
+           <h3 class="brutal-result-heading">MATCHING RECORDS:</h3>
+           <div id="statusList" class="brutal-history-wrapper"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<footer class="brutal-footer mt-auto">
+  <div class="container">
+    <div class="row brutal-footer-row">
+      <div class="col-md-5 mb-4 mb-md-0 brutal-footer-info">
+        <h3 class="brutal-footer-brand">ADMIN.SYS</h3>
+        <p class="brutal-footer-text"><strong>ADDR:</strong> Jl. Merdeka No.45, Jakarta Pusat</p>
+        <p class="brutal-footer-text"><strong>TEL:</strong> (021) 555-0198</p>
+        <p class="brutal-footer-text"><strong>MAIL:</strong> contact@instansi.gov.id</p>
+      </div>
+      <div class="col-md-7 p-0">
+        <iframe class="brutal-map" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d126920.24009088654!2d106.758830113824!3d-6.229746497187132!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e69f3e945e34b9d%3A0x100c5e82dd4b820!2sJakarta!5e0!3m2!1sen!2sid!4v1689255280365!5m2!1sen!2sid" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+      </div>
+    </div>
+  </div>
+</footer>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+<script src="script.js"></script>
+</body>
+</html>
