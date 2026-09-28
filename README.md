@@ -7,6 +7,7 @@
 
 
 
+
 **INSTRUKSI BUAT GUSTAVO FRIGN**
 Prompt sesuai dengan soal yang di atas, dan prompt juga variasi, misal di soal b ada 2 orang yg dapet, prompt 2 variasi untuk soal yg sama
 
