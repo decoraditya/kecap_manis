@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Administrator</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
+<script src="https://unpkg.com/feather-icons"></script>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<nav class="top-nav">
+    <div class="nav-container">
+        <a href="#" class="brand-logo">
+            <i data-feather="slack"></i>
+            <span>Administrator</span>
+        </a>
+        
+        <button class="mobile-toggle" id="menuToggle">
+            <i data-feather="menu"></i>
+        </button>
+
+        <div class="nav-menu" id="navMenu">
+            <ul class="nav-links">
+                <li class="nav-item active">
+                    <a href="#" class="nav-link">Dashboard</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#" class="nav-link">Customers</a>
+                </li>
+                <li class="nav-item has-dropdown" id="productsDropdown">
+                    <div class="nav-link dropdown-trigger">
+                        Products <i data-feather="chevron-down" class="icon-sm"></i>
+                    </div>
+                    <ul class="dropdown-content">
+                        <li><a href="#">Electronics</a></li>
+                        <li><a href="#">Tools & Equipment</a></li>
+                        <li class="separator"></li>
+                        <li><a href="#">View All Products</a></li>
+                    </ul>
+                </li>
+                <li class="nav-item disabled">
+                    <span class="nav-link">Disabled</span>
+                </li>
+            </ul>
+            
+            <form class="search-bar" id="searchForm">
+                <input type="search" placeholder="Search..." class="search-input">
+                <button type="submit" class="search-button">
+                    <i data-feather="search"></i>
+                </button>
+            </form>
+        </div>
+    </div>
+</nav>
+
+<main class="main-content">
+    <header class="page-header">
+        <h1>Dashboard</h1>
+    </header>
+
+    <section class="overview-cards">
+        <div class="neumorphic-card stat-card">
+            <div class="stat-details">
+                <span class="stat-title">Customers</span>
+                <span class="stat-number">554</span>
+            </div>
+            <div class="stat-icon circle-icon text-blue">
+                <i data-feather="users"></i>
+            </div>
+        </div>
+        
+        <div class="neumorphic-card stat-card">
+            <div class="stat-details">
+                <span class="stat-title">Sales</span>
+                <span class="stat-number">$16,356</span>
+            </div>
+            <div class="stat-icon circle-icon text-green">
+                <i data-feather="dollar-sign"></i>
+            </div>
+        </div>
+        
+        <div class="neumorphic-card stat-card">
+            <div class="stat-details">
+                <span class="stat-title">Performance</span>
+                <span class="stat-number">256%</span>
+            </div>
+            <div class="stat-icon circle-icon text-orange">
+                <i data-feather="activity"></i>
+            </div>
+        </div>
+    </section>
+
+    <div class="content-grid">
+        <aside class="side-panel">
+            <div class="neumorphic-card form-card">
+                <h2>Invoice</h2>
+                <form id="invoiceForm" class="data-form">
+                    <div class="form-control">
+                        <label for="invoiceNo">Invoice No</label>
+                        <input type="text" id="invoiceNo" class="neumorphic-input">
+                        <span class="help-text">INV-##/UNTAR/MM/YYYY</span>
+                    </div>
+                    <div class="form-control">
+                        <label for="invoiceNotes">Notes</label>
+                        <input type="text" id="invoiceNotes" class="neumorphic-input">
+                    </div>
+                    <button type="submit" class="neumorphic-button primary">Save Record</button>
+                </form>
+            </div>
+        </aside>
+
+        <section class="main-panel">
+            <div class="neumorphic-card table-card">
+                <h2>Customers Directory</h2>
+                <div class="table-wrapper">
+                    <table id="customersTable" class="neumorphic-table">
+                        <thead>
+                            <tr>
+                                <th data-sort="number" data-col="0">
+                                    <div class="th-content">No <i data-feather="chevron-down" class="sort-indicator"></i></div>
+                                </th>
+                                <th data-sort="string" data-col="1">
+                                    <div class="th-content">Full Name <i data-feather="chevron-down" class="sort-indicator"></i></div>
+                                </th>
+                                <th data-sort="string" data-col="2">
+                                    <div class="th-content">Email Address <i data-feather="chevron-down" class="sort-indicator"></i></div>
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>1</td>
+                                <td>John Doe</td>
+                                <td>john.doe@example.com</td>
+                            </tr>
+                            <tr>
+                                <td>2</td>
+                                <td>Jane Smith</td>
+                                <td>jane.smith@example.com</td>
+                            </tr>
+                            <tr>
+                                <td>3</td>
+                                <td>Michael Brown</td>
+                                <td>michael.brown@example.com</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+    </div>
+</main>
+<script src="script.js"></script>
+</body>
+</html>

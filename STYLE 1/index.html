@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Administrator</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<script src="https://unpkg.com/feather-icons"></script>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="app-wrapper">
+    <aside class="sidebar" id="appSidebar">
+        <div class="brand">
+            <i data-feather="slack"></i>
+            <span>Administrator</span>
+        </div>
+        <ul class="nav-list">
+            <li class="nav-item active">
+                <a href="#" class="nav-link"><i data-feather="grid"></i> Dashboard</a>
+            </li>
+            <li class="nav-item">
+                <a href="#" class="nav-link"><i data-feather="users"></i> Customers</a>
+            </li>
+            <li class="nav-item dropdown" id="productsDropdown">
+                <div class="nav-link dropdown-toggle">
+                    <div class="dropdown-label">
+                        <i data-feather="box"></i> Products
+                    </div>
+                    <i data-feather="chevron-down" class="chevron"></i>
+                </div>
+                <ul class="dropdown-menu">
+                    <li><a href="#">Electronics</a></li>
+                    <li><a href="#">Tools & Equipment</a></li>
+                    <li class="divider"></li>
+                    <li><a href="#">View All Products</a></li>
+                </ul>
+            </li>
+            <li class="nav-item disabled">
+                <a href="#" class="nav-link"><i data-feather="slash"></i> Disabled</a>
+            </li>
+        </ul>
+    </aside>
+
+    <main class="main-area">
+        <header class="top-header">
+            <button class="menu-toggle" id="menuToggle">
+                <i data-feather="menu"></i>
+            </button>
+            <form class="search-form" id="searchForm">
+                <i data-feather="search" class="search-icon"></i>
+                <input type="search" placeholder="Search..." class="search-input">
+                <button type="submit" class="search-btn">Search</button>
+            </form>
+        </header>
+
+        <div class="content-container">
+            <h1 class="page-title">Dashboard</h1>
+            
+            <div class="stats-grid">
+                <div class="stat-card glass-panel">
+                    <div class="stat-info">
+                        <h5 class="stat-label">Customers</h5>
+                        <h4 class="stat-value">554</h4>
+                    </div>
+                    <div class="stat-icon text-blue">
+                        <i data-feather="user"></i>
+                    </div>
+                </div>
+                
+                <div class="stat-card glass-panel">
+                    <div class="stat-info">
+                        <h5 class="stat-label">Sales</h5>
+                        <h4 class="stat-value">$16,356</h4>
+                    </div>
+                    <div class="stat-icon text-green">
+                        <i data-feather="dollar-sign"></i>
+                    </div>
+                </div>
+                
+                <div class="stat-card glass-panel">
+                    <div class="stat-info">
+                        <h5 class="stat-label">Performance</h5>
+                        <h4 class="stat-value">256%</h4>
+                    </div>
+                    <div class="stat-icon text-purple">
+                        <i data-feather="trending-up"></i>
+                    </div>
+                </div>
+            </div>
+
+            <div class="bottom-grid">
+                <div class="invoice-section glass-panel">
+                    <h4 class="section-title">Invoice</h4>
+                    <form id="invoiceForm">
+                        <div class="input-group">
+                            <label for="invoiceNo">Invoice No</label>
+                            <input type="text" id="invoiceNo" class="glass-input">
+                            <small class="helper-text">INV-##/UNTAR/MM/YYYY</small>
+                        </div>
+                        <div class="input-group">
+                            <label for="invoiceNotes">Notes</label>
+                            <input type="text" id="invoiceNotes" class="glass-input">
+                        </div>
+                        <button type="submit" class="primary-btn">Save</button>
+                    </form>
+                </div>
+
+                <div class="customers-section glass-panel">
+                    <h4 class="section-title">Customers</h4>
+                    <div class="table-responsive">
+                        <table class="glass-table" id="customersTable">
+                            <thead>
+                                <tr>
+                                    <th data-sort="number" data-col="0">No <i data-feather="code" class="sort-icon"></i></th>
+                                    <th data-sort="string" data-col="1">Full Name <i data-feather="code" class="sort-icon"></i></th>
+                                    <th data-sort="string" data-col="2">Email <i data-feather="code" class="sort-icon"></i></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>1</td>
+                                    <td>John Doe</td>
+                                    <td>john.doe@example.com</td>
+                                </tr>
+                                <tr>
+                                    <td>2</td>
+                                    <td>Jane Smith</td>
+                                    <td>jane.smith@example.com</td>
+                                </tr>
+                                <tr>
+                                    <td>3</td>
+                                    <td>Michael Brown</td>
+                                    <td>michael.brown@example.com</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+</div>
+<script src="script.js"></script>
+</body>
+</html>
