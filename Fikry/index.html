@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Far East Padel - GROVES</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-brand-primary sticky-top shadow-sm">
+        <div class="container">
+            <a class="navbar-brand fw-bold" href="#">
+                <img src="assets/img/logo-icon.png" alt="Logo" class="ui-icon-lg"> ArenaMaster
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="#home">Beranda</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#booking">Booking</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#status">Status Booking</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <header id="home" class="bg-brand-light py-5">
+        <div class="container py-5 text-center">
+            <h1 class="display-4 fw-bold text-brand-primary mb-3">Booking Lapangan Jadi Lebih Mudah</h1>
+            <p class="lead text-muted mb-4">Fasilitas olahraga premium untuk badminton, tenis, dan padel. Pesan jadwal Anda sekarang dalam hitungan menit.</p>
+            <a href="#booking" class="btn btn-brand-accent btn-lg px-5">Mulai Booking</a>
+        </div>
+    </header>
+
+    <section class="py-5 bg-white">
+        <div class="container">
+            <h2 class="text-center fw-bold text-brand-primary mb-5">Tata Cara Booking</h2>
+            <div class="row g-4">
+                <div class="col-md-4 text-center">
+                    <div class="card-custom p-4 h-100">
+                        <img src="assets/img/step1-icon.png" alt="Pilih" class="ui-icon-xl mb-3">
+                        <h4 class="fw-bold">1. Pilih Lapangan</h4>
+                        <p class="text-muted">Tersedia berbagai pilihan court standar internasional sesuai kebutuhan olahraga Anda.</p>
+                    </div>
+                </div>
+                <div class="col-md-4 text-center">
+                    <div class="card-custom p-4 h-100">
+                        <img src="assets/img/step2-icon.png" alt="Jadwal" class="ui-icon-xl mb-3">
+                        <h4 class="fw-bold">2. Tentukan Jadwal</h4>
+                        <p class="text-muted">Pilih tanggal dan jam bermain. Anda dapat memesan jadwal hingga 7 hari ke depan.</p>
+                    </div>
+                </div>
+                <div class="col-md-4 text-center">
+                    <div class="card-custom p-4 h-100">
+                        <img src="assets/img/step3-icon.png" alt="Bayar" class="ui-icon-xl mb-3">
+                        <h4 class="fw-bold">3. Pembayaran</h4>
+                        <p class="text-muted">Selesaikan pembayaran secara instan untuk mengamankan slot lapangan Anda.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="booking" class="py-5 bg-brand-light">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-8">
+                    <div class="card-custom p-5">
+                        <h2 class="fw-bold text-brand-primary mb-4 text-center">Form Booking Lapangan</h2>
+                        <form id="bookingForm">
+                            <div class="row g-3">
+                                <div class="col-md-12">
+                                    <label class="form-label fw-semibold">Pilih Lapangan</label>
+                                    <select class="form-select" id="courtSelect" required>
+                                        <option value="" selected disabled>Pilih jenis lapangan...</option>
+                                        <option value="Badminton Court A">Badminton Court A</option>
+                                        <option value="Badminton Court B">Badminton Court B</option>
+                                        <option value="Tennis Center Court">Tennis Center Court</option>
+                                        <option value="Padel Court 1">Padel Court 1</option>
+                                    </select>
+                                </div>
+                                <div class="col-md-12">
+                                    <label class="form-label fw-semibold">Nama Lengkap</label>
+                                    <input type="text" class="form-control" id="fullName" required>
+                                </div>
+                                <div class="col-md-6">
+                                    <label class="form-label fw-semibold">Nomor Telepon</label>
+                                    <input type="tel" class="form-control" id="phoneNumber" required>
+                                </div>
+                                <div class="col-md-6">
+                                    <label class="form-label fw-semibold">Alamat Email</label>
+                                    <input type="email" class="form-control" id="emailAddress" required>
+                                </div>
+                                <div class="col-md-4">
+                                    <label class="form-label fw-semibold">Tanggal</label>
+                                    <input type="date" class="form-control" id="bookingDate" required>
+                                </div>
+                                <div class="col-md-4">
+                                    <label class="form-label fw-semibold">Jam Mulai</label>
+                                    <input type="time" class="form-control" id="startTime" min="06:00" max="23:00" required>
+                                </div>
+                                <div class="col-md-4">
+                                    <label class="form-label fw-semibold">Durasi (Jam)</label>
+                                    <input type="number" class="form-control" id="duration" min="1" value="1" required>
+                                </div>
+                                <div class="col-12 mt-4">
+                                    <button type="submit" class="btn btn-brand-accent w-100 py-2 fs-5">Konfirmasi Booking</button>
+                                </div>
+                            </div>
+                        </form>
+                        
+                        <div id="paymentInfo" class="mt-4 p-4 bg-brand-highlight rounded-custom d-none">
+                            <h4 class="fw-bold text-success mb-2">
+                                <img src="assets/img/success-icon.png" alt="Success" class="ui-icon"> Booking Berhasil Dibuat
+                            </h4>
+                            <p class="mb-1">Silakan lakukan pembayaran sebesar:</p>
+                            <h2 class="fw-bold text-brand-primary" id="totalPrice">Rp 0</h2>
+                            <hr>
+                            <p class="mb-0 text-muted">Transfer ke Virtual Account Bank BCA: <strong>8890-1234-5678</strong> atas nama ArenaMaster.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="status" class="py-5 bg-white">
+        <div class="container">
+            <h2 class="fw-bold text-brand-primary mb-4">Riwayat & Status Booking Anda</h2>
+            <div class="card-custom p-0 overflow-hidden">
+                <div class="table-responsive">
+                    <table class="table table-hover mb-0 align-middle">
+                        <thead class="bg-brand-primary text-white">
+                            <tr>
+                                <th class="py-3 px-4">Nama Pemesan</th>
+                                <th class="py-3 px-4">Lapangan</th>
+                                <th class="py-3 px-4">Jadwal</th>
+                                <th class="py-3 px-4">Durasi</th>
+                                <th class="py-3 px-4">Status</th>
+                            </tr>
+                        </thead>
+                        <tbody id="historyTableBody">
+                            <tr>
+                                <td class="px-4">Budi Santoso</td>
+                                <td class="px-4">Tennis Center Court</td>
+                                <td class="px-4">2026-10-01, 15:00</td>
+                                <td class="px-4">2 Jam</td>
+                                <td class="px-4"><span class="badge bg-success">Lunas</span></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="bg-brand-primary text-white py-5">
+        <div class="container">
+            <div class="row g-4">
+                <div class="col-lg-6">
+                    <h3 class="fw-bold mb-3">
+                        <img src="assets/img/logo-white.png" alt="Logo" class="ui-icon-lg"> ArenaMaster
+                    </h3>
+                    <p class="mb-1"><img src="assets/img/pin-icon.png" alt="Lokasi" class="ui-icon"> Jl. Olahraga Jaya No. 99, Jakarta Barat</p>
+                    <p class="mb-1"><img src="assets/img/phone-icon.png" alt="Telepon" class="ui-icon"> +62 812 3456 7890</p>
+                    <p class="mb-1"><img src="assets/img/mail-icon.png" alt="Email" class="ui-icon"> info@arenamaster.id</p>
+                    <p class="mt-3 text-white-50">Jam Operasional: Setiap Hari 06:00 - 23:00 WIB</p>
+                </div>
+                <div class="col-lg-6">
+                    <div class="rounded-custom overflow-hidden shadow-sm">
+                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1m2!1s0x2e69f70000000001%3A0x0000000000000000!2sJakarta%20Barat!5e0!3m2!1sen!2sid!4v1600000000000!5m2!1sen!2sid" width="100%" height="250" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+                    </div>
+                </div>
+            </div>
+            <div class="row mt-4 pt-4 border-top border-secondary">
+                <div class="col-12 text-center text-white-50">
+                    &copy; 2026 ArenaMaster Sports Center. All rights reserved.
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
